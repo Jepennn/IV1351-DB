@@ -79,7 +79,7 @@ CREATE TABLE "group_lesson" (
   "star_time" TIME NOT NULL,
   "end_time" TIME NOT NULL,
   "date" DATE NOT NULL,
-  FOREIGN KEY ("instructor_id") REFERENCES "instructor"("id") ON DELETE SET NULL
+  FOREIGN KEY ("instructor_id") REFERENCES "instructor"("id") ON DELETE SET NULL,
   FOREIGN KEY ("instrument_id") REFERENCES "instrument"("id") ON DELETE CASCADE
 );
 
@@ -115,10 +115,13 @@ CREATE TABLE "student_ensemble" (
 CREATE TABLE "individual_lesson" (
   "id" SERIAL PRIMARY KEY,
   "instructor_id" INT,
+  "student_id" INT NOT NULL,
   "start_time" TIME NOT NULL,
   "end_time" TIME NOT NULL,
   "date" DATE NOT NULL,
-  FOREIGN KEY ("instructor_id") REFERENCES "instructor"("id")
+  FOREIGN KEY ("instructor_id") REFERENCES "instructor"("id") ON DELETE SET NULL,
+  FOREIGN KEY ("student_id") REFERENCES "student"("id") ON DELETE CASCADE
+
 );
 
 CREATE TABLE "lesson_price" (
