@@ -92,7 +92,7 @@ SELECT
     END AS free_seats
 FROM ensemble e
 LEFT JOIN student_ensemble se ON e.id = se.ensemble_id
-WHERE e.date >= current_date AND e.date < current_date + INTERVAL '7 days'
+WHERE e.date >= CURRENT_DATE AND e.date < CURRENT_DATE + INTERVAL '7 days'
 GROUP BY e.id;
 
 
